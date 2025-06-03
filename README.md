@@ -30,7 +30,7 @@ Visit the live application: [Full Moon Analysis](https://myankhai.github.io/full
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Feel free to give suggestions and contribute.
 
 ## License
 
