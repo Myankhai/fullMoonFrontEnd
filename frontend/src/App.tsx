@@ -168,7 +168,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/combined_analysis.json');
+        const response = await fetch('/fullMoonFrontEnd/combined_analysis.json');
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
