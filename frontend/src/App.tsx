@@ -168,11 +168,14 @@ const App: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/fullMoonFrontEnd/combined_analysis.json');
+        console.log('Attempting to fetch data...');
+        const response = await fetch(import.meta.env.BASE_URL + 'combined_analysis.json');
         if (!response.ok) {
-          throw new Error('Failed to fetch data');
+          console.error('Response not OK:', response.status, response.statusText);
+          throw new Error(`Failed to fetch data: ${response.status} ${response.statusText}`);
         }
         const jsonData = await response.json();
+        console.log('Data fetched successfully');
         setData(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -263,7 +266,12 @@ const App: React.FC = () => {
   if (!data) {
     return (
       <div style={containerStyle} className="flex items-center justify-center">
-        <div className="text-2xl text-gray-100 relative z-10">Loading data...</div>
+        <div className="text-2xl text-gray-100 relative z-10">
+          Loading data... Please wait.
+          <div className="text-sm mt-2 text-gray-400">
+            If this persists, there might be an issue with data loading.
+          </div>
+        </div>
       </div>
     );
   }

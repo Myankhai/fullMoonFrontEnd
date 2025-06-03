@@ -9,5 +9,16 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     copyPublicDir: true,
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          // Keep JSON files in the root
+          if (assetInfo.name?.endsWith('.json')) {
+            return '[name][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
+      }
+    }
   }
 })
